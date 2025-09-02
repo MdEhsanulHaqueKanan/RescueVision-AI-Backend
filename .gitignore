@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data & Models (if they are too large for Git)
+data/raw/
+models/
+*.pt
+*.pth
+
+# IDE / OS specific
+.vscode/
+.idea/
+.DS_Store

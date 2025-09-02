@@ -1,0 +1,30 @@
+# requirements.txt
+
+# Core libraries for data handling and notebooks
+jupyter
+pandas
+
+# LangChain for RAG pipeline orchestration
+langchain
+langchain-community  # <-- ADDED THIS NEW REQUIREMENT
+
+# For creating text embeddings
+sentence-transformers
+
+# Vector Database
+chromadb
+
+# For loading PDF documents
+pypdf
+
+# For managing environment variables (good practice)
+python-dotenv
+
+# For building the web API
+Flask
+flask-cors
+
+# For Computer Vision Model Serving
+ultralytics
+Pillow
+opencv-python
