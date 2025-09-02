@@ -111,3 +111,41 @@ The backend consists of two independent services. Run each in a separate termina
     python src/api/cv_api.py
     ```
     *(Service will be live at `http://localhost:5002`)*
+
+---
+
+## 🔬 Future Enhancements & Research Roadmap
+
+The RescueVision platform is a robust MVP, but its architecture is designed for significant future expansion. The following roadmap outlines key areas for further research and development to evolve this tool into a fully-fledged, real-time operational asset.
+
+### 1. Transition to Real-Time Tracking with Frontend Intelligence
+
+*   **Objective:** Evolve from an "Event Reviewer" to a live, real-time tracking system suitable for active missions.
+*   **Methodology:**
+    *   **Implement a Frontend Tracking Algorithm:** Integrate a lightweight, efficient tracking algorithm (e.g., a Centroid Tracker or a simple Kalman Filter) directly into the React frontend.
+    *   **Decouple Detection from Tracking:** The powerful YOLOv8 backend will continue to run at a throttled pace (e.g., 2-3 times per second) to provide high-confidence *detections*. The frontend tracker will use these detections as its "ground truth" and then interpolate the bounding box positions smoothly across the frames in between, running at 60fps.
+*   **Expected Outcome:** A flawless, real-time user experience that provides the illusion of a 60fps AI tracker while efficiently managing backend resources, solving the latency problem we observed during initial prototyping.
+
+### 2. Multi-Object and Vehicle Detection
+
+*   **Objective:** Expand the model's capabilities to detect other critical "signs of life" in a disaster zone.
+*   **Methodology:**
+    *   **Data Sourcing:** Augment the current dataset with labeled images of vehicles (cars, boats), backpacks, and potentially large animals.
+    *   **Multi-Class Model Training:** Re-train the YOLOv8 model on this new, multi-class dataset.
+    *   **Frontend Updates:** Update the UI to display different colored bounding boxes and icons for each detected class (e.g., blue for 'person', green for 'vehicle').
+
+### 3. Audio Analysis for "Cries for Help"
+
+*   **Objective:** Add another modality to the system by analyzing the drone's audio feed for human vocal distress signals.
+*   **Methodology:**
+    *   **Research & Model Selection:** Investigate and fine-tune a pre-trained audio classification model (e.g., YAMNet) on a dataset of human sounds, specifically targeting keywords like "help."
+    *   **New Microservice:** Develop a third, independent microservice for audio processing that accepts an audio stream and returns timestamped events for potential vocal distress.
+    *   **UI Integration:** Add an "Audio Alert" indicator to the Detections Log.
+
+### 4. Deployment to Edge Devices
+
+*   **Objective:** Move the AI inference from a cloud/local server to a low-power, high-efficiency computer on the drone itself for true autonomy.
+*   **Methodology:**
+    *   **Model Optimization:** Convert the trained PyTorch model to a more efficient format like ONNX or TensorRT.
+    *   **Quantization:** Further optimize the model by converting its weights from 32-bit floating points to 8-bit integers, drastically reducing its size and computational requirements.
+    *   **Edge Deployment:** Deploy the optimized model to an edge device like an **NVIDIA Jetson Nano** mounted on the drone.
