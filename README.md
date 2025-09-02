@@ -15,7 +15,10 @@ This repository contains the complete backend infrastructure for the **RescueVis
   <img src="./assets/RescueVision_demo.gif" alt="RescueVision AI Command Center Demo" width="900"/>
 </p>
 
-### **➡️ [View the Frontend Here](https://github.com/MdEhsanulHaqueKanan/rescuevision-ai-command-center)**
+### Final Application Screenshot
+![RescueVision Screenshot](./assets/RescueVision.png)
+
+##### **➡️ [View the Frontend Here](https://github.com/MdEhsanulHaqueKanan/rescuevision-ai-command-center)**
 
 The backend consists of two independent, production-grade microservices:
 1.  **A Computer Vision (CV) Service:** A custom-trained deep learning model that processes entire video files to detect and locate survivors.
